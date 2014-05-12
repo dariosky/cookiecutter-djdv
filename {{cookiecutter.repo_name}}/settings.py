@@ -33,7 +33,7 @@ if DEBUG:
 ALLOWED_HOSTS = ['*']  # change me
 
 ADMINS = (
-	('Dario Varotto', 'dvarotto@interacti.co'),
+	('{{cookiecutter.full_name}}', '{{cookiecutter.email}}'),
 )
 
 MANAGERS = ADMINS
@@ -124,8 +124,9 @@ TEMPLATE_DIRS = (
 	#  Always use forward slashes, even on Windows.  #  Don't forget to use absolute paths, not relative paths.
 )
 
-# email definitions
-EMAIL_SUBJECT_PREFIX = "[gisite]"
+# E-MAIL definitions
+EMAIL_SUBJECT_PREFIX = "[{{cookiecutter.repo_name}}]"
+# ***
 
 use_debug_toolbar = DEBUG
 if use_debug_toolbar:
@@ -144,6 +145,9 @@ if use_debug_toolbar:
 
 
 # load secret settings
+# secret settings should contain:
+# SECRET_KEY = 'unique secret key'
+# DATABASES = {redefine database access credential}
 settings_file = os.environ.get('SECRET_SETTINGS', 'settings_secret')
 try:
 	# Dynamically import settings from the indicated sys envoronment var
@@ -192,7 +196,7 @@ LOGGING = {
 			'level': 'INFO',
 			'class': 'logging.handlers.RotatingFileHandler',
 			'filename': os.path.join(BASE_DIR, 'logs/logs/main.log'),
-			'maxBytes': 1024 * 1024 * 5,  # 5 MB
+			'maxBytes': 1024 * 1024 * 3,  # x MB
 			'backupCount': 7,
 			'formatter': 'main_formatter',
 			'filters': ['require_debug_false'],
@@ -201,7 +205,7 @@ LOGGING = {
 			'level': 'DEBUG',
 			'class': 'logging.handlers.RotatingFileHandler',
 			'filename': os.path.join(BASE_DIR, 'logs/logs/main_debug.log'),
-			'maxBytes': 1024 * 1024 * 5,  # 5 MB
+			'maxBytes': 1024 * 1024 * 3,  # x MB
 			'backupCount': 7,
 			'formatter': 'main_formatter',
 			'filters': ['require_debug_true'],
