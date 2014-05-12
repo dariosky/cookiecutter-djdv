@@ -4,9 +4,7 @@
 	"project_short_description": "A Django template with some of thing I like.",
 
 	"full_name": "Dario Varotto",
-	"email": "dario.varotto@gmail.com"
+	"email": "dario.varotto@gmail.com",
 
-//	"release_date": "2014-05-09",
-//	"year": "2014",
-//	"version": "0.0.1"
+	"year": "2014"
 }

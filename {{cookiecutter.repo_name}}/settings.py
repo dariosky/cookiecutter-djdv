@@ -13,13 +13,14 @@ import logging
 from socket import gethostname
 import os
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+BASE_DIR = os.path.dirname(__file__)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 host = gethostname().lower()
-if host in ("dariosky", "acido", "dario", "dico"):
+# a list of hostname whete we do development, change it to dynamically set DEBUG mode
+if host in ("dev-host",):
 	DEBUG = True  # test mode
 else:
 	DEBUG = False
@@ -120,7 +121,7 @@ if not DEBUG:
 	),
 	)
 TEMPLATE_DIRS = (
-	os.path.join(BASE_DIR, 'templates')  # Put strings here, like "/home/html/django_templates"
+	os.path.join(BASE_DIR, 'templates'),  # Put strings here, like "/home/html/django_templates"
 	#  Always use forward slashes, even on Windows.  #  Don't forget to use absolute paths, not relative paths.
 )
 
@@ -139,7 +140,9 @@ if use_debug_toolbar:
 		                     MIDDLEWARE_CLASSES
 	except:
 		pass
-	DEBUG_TOOLBAR_CONFIG = {"INTERCEPT_REDIRECTS": False}
+	DEBUG_TOOLBAR_CONFIG = {
+		'SHOW_TEMPLATE_CONTEXT': True,
+	}
 	INTERNAL_IPS = ('127.0.0.1',)
 	INSTALLED_APPS = INSTALLED_APPS + ('debug_toolbar',)
 
@@ -195,7 +198,7 @@ LOGGING = {
 		'production_file': {
 			'level': 'INFO',
 			'class': 'logging.handlers.RotatingFileHandler',
-			'filename': os.path.join(BASE_DIR, 'logs/logs/main.log'),
+			'filename': os.path.join(BASE_DIR, 'logs', 'main.log'),
 			'maxBytes': 1024 * 1024 * 3,  # x MB
 			'backupCount': 7,
 			'formatter': 'main_formatter',
@@ -204,7 +207,7 @@ LOGGING = {
 		'debug_file': {
 			'level': 'DEBUG',
 			'class': 'logging.handlers.RotatingFileHandler',
-			'filename': os.path.join(BASE_DIR, 'logs/logs/main_debug.log'),
+			'filename': os.path.join(BASE_DIR, 'logs', 'main_debug.log'),
 			'maxBytes': 1024 * 1024 * 3,  # x MB
 			'backupCount': 7,
 			'formatter': 'main_formatter',
