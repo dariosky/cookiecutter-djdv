@@ -1,0 +1,11 @@
+# Local development dependencies go here
+
+-r base.txt
+
+coverage
+Sphinx
+
+django-debug-toolbar
+
+# deployment
+fabric

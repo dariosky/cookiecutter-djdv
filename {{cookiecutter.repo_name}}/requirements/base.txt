@@ -1,0 +1,24 @@
+# Bleeding edge Django
+django==1.6.4
+
+# Models
+South
+
+# images
+Pillow
+django-pipeline
+
+# send email via Mandrill
+djrill
+
+# Useful things
+pytz
+
+#reportlab
+#vobject
+#svglib
+#xlrd
+#xlwt
+
+# frontend
+django-bootstrap3

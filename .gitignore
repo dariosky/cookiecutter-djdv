@@ -1,0 +1,7 @@
+# IDE things
+Desktop.ini
+/.project
+/.pydevproject
+.settings/
+/nbproject/
+/.idea

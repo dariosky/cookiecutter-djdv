@@ -1,0 +1,27 @@
+# Exclude some type of file
+*.py[cod]
+*.db3
+*.bak
+
+# development assets
+/dev/
+
+# IDE things
+Desktop.ini
+/.project
+/.pydevproject
+.settings/
+/nbproject/
+/.idea/
+
+# instance secret files
+/{{cookiecutter.repo_name}}/settings_*.py
+/*.ini
+
+run_server
+
+/static/*
+!/static/.htaccess
+
+#logs file
+/logs

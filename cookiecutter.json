@@ -1,0 +1,10 @@
+{
+	"full_name": "Dario Varotto",
+	"email": "dario.varotto@gmail.com",
+	"project_name": "Sample project name",
+	"repo_name": "projectname",
+	"project_short_description": "A Django template with some of thing I like.",
+	"release_date": "2014-05-09",
+	"year": "2014",
+	"version": "0.0.1"
+}
