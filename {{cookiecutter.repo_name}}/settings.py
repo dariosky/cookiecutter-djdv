@@ -86,6 +86,9 @@ DATABASES = {
 	}
 }
 
+# use persistent database connections (life in seconds)
+CONN_MAX_AGE = 60
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 

@@ -49,6 +49,8 @@ if not env.get('NAME'):
 if not env.get('PROCESS_NAME'):
 	env.PROCESS_NAME = 'gunicorn-%s' % env.NAME
 
+env.USE_SOUTH = env.get('USE_SOUTH') != 'False'
+
 if os.path.exists(os.path.expanduser("~/.ssh/config")):
 	env.use_ssh_config = True
 
@@ -122,7 +124,9 @@ def initial_deploy():
 	create_virtualenv()
 	update_distribute()  # some package won't install if distriubte is the old one
 	run('mkdir -p %s' % env.LOGDIR)  # create the log dir if missing
-	run('chmod +x %s' % posixpath.join(env.REPOSITORY_FOLDER, "node_modules", "yuglify", "bin"))
+	if os.path.isfile(os.path.join(env.localfolder, "node_modules", "yuglify", "bin", "yuglify")):
+		# if we are using yuglify locally (I suppose it's on remote too)
+		run('chmod +x %s' % posixpath.join(env.REPOSITORY_FOLDER, "node_modules", "yuglify", "bin", "yuglify"))
 	create_run_command()
 
 
@@ -132,7 +136,8 @@ def update_database():
 		with cd(env.REPOSITORY_FOLDER):
 			# update database, both standard apps and south migrated
 			run("python manage.py syncdb")
-			run("python manage.py migrate")
+			if env.get('USE_SOUTH', True):
+				run("python manage.py migrate")
 
 
 @task
@@ -277,7 +282,7 @@ def run_command_content(daemon=None):
 	env.GUNICORN_ARGUMENTS = default_args.format(**env)
 
 	# prepare the variables
-	{% raw %}
+	{ % raw %}
 	content = """#!/bin/bash
 GUNICORN_CMD={VENV_FOLDER}/bin/gunicorn
 GUNICORN_ARGS="{GUNICORN_ARGUMENTS}"
@@ -335,7 +340,7 @@ esac
 exit 0
 #exec $GUNICORN_CMD $GUNICORN_ARGS -b 127.0.0.1:$PORT --log-file $LOG_PATH --pid $PID_PATH {WSGI_APPLICATION}
 	"""
-	{% endraw %}
+	{ % endraw %}
 	return content.format(**env)
 
 

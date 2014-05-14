@@ -2,6 +2,8 @@
 	"repo_name": "projectname",
 	"project_name": "Sample project name",
 	"project_short_description": "A Django template with some of thing I like.",
+	"fqdn_url": "example.com",
+	"gunicorn_port": 6000,
 
 	"full_name": "Dario Varotto",
 	"email": "dario.varotto@gmail.com",
