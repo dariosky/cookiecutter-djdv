@@ -12,7 +12,7 @@ start_server () {{
        echo "A server is already running on port $PORT"
        return
     else
-    	echo "We have the PID but not the process deleting PID and restarting"
+    	echo "We have the PID but not the process deleting PID and restarting" >&2
     	rm -f $PID_PATH
     fi
   fi
