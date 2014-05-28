@@ -1,4 +1,4 @@
-#!/bin/bash{ % raw %}
+{% raw %}#!/bin/bash
 GUNICORN_CMD={VENV_FOLDER}/bin/gunicorn
 GUNICORN_ARGS="{GUNICORN_ARGUMENTS}"
 PYTHONPATH={VENV_FOLDER}
@@ -55,4 +55,4 @@ esac
 
 exit 0
 #exec $GUNICORN_CMD $GUNICORN_ARGS -b 127.0.0.1:$PORT --log-file $LOG_PATH --pid $PID_PATH {WSGI_APPLICATION}
-{ % endraw %}
+{% endraw %}
