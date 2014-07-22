@@ -106,7 +106,7 @@ MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 STATICFILES_STORAGE = '{{cookiecutter.repo_name}}.storage.PipelineCachedStorage'
-PIPELINE_YUGLIFY_BINARY = os.path.join(BASE_DIR, 'node_modules/.bin/node_modules/.bin/yuglify')
+PIPELINE_YUGLIFY_BINARY = os.path.join(BASE_DIR, 'node_modules/.bin/yuglify')
 STATICFILES_FINDERS = ("django.contrib.staticfiles.finders.FileSystemFinder",
                        "django.contrib.staticfiles.finders.AppDirectoriesFinder")
 STATICFILES_DIRS = (

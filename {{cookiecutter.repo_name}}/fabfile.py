@@ -82,7 +82,7 @@ perform_env_substitutions()
 
 def secrets_file_paths():
 	""" Return a list of secret files (to be sent) relative to REPOSITORY_FOLDER """
-	return [env.SECRETS_FILE]
+	return env.SECRETS_FILE.split(',')
 
 
 @_contextmanager
