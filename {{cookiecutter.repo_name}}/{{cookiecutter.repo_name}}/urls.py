@@ -11,3 +11,16 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
 )
+
+
+
+def errorview(request):
+	raise Exception("Test exception")
+
+
+handler404 = '{{cookiecutter.repo_name}}.views.errors404'
+handler500 = '{{cookiecutter.repo_name}}.views.errors505'
+
+urlpatterns += patterns('',
+                        url('^500/', errorview, name='error-test')
+)

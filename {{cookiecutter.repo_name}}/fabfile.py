@@ -283,7 +283,7 @@ def run_command_content(daemon=None):
 
 	# prepare the variables
 
-	content = file(os.path.join(env.localfolder, 'run_server.sh')).read()
+	content = file(os.path.join(env.localfolder, 'run_server.sh.tmpl')).read()
 	return content.format(**env)
 
 

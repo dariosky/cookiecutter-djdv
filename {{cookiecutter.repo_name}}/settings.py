@@ -24,6 +24,7 @@ if host in ("dev-host",):
 	DEBUG = True  # test mode
 else:
 	DEBUG = False
+# DEBUG = False     # uncomment to test the no-debug mode
 TEMPLATE_DEBUG = True
 
 if DEBUG:
@@ -55,6 +56,7 @@ THIRD_PARTY_APPS = (
 	'south',  # Database migration helper
 	'djrill',  # Mandrill email
 	'bootstrap3',  # bootstrap helpers
+    'pipeline',
 )
 
 LOCAL_APPS = (
